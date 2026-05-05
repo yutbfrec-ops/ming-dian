@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五行系列服務 | 明典有限公司</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Work+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#81161b;--primary-container:#a22f2f;--on-primary:#fff;--secondary:#7a5822;--secondary-container:#ffd08d;--on-secondary-container:#795721;--surface:#f9f9f9;--surface-lowest:#fff;--surface-low:#f3f3f3;--surface-high:#e8e8e8;--on-surface:#1b1b1b;--on-surface-v:#584140;--outline:#8b716f;--outline-v:#dfbfbd;--inverse:#303030;--inverse-on:#f1f1f1;--gold:#fecf8d;--fh:'Manrope',sans-serif;--fb:'Work Sans',sans-serif;--fl:'Space Grotesk',sans-serif;--r-md:.375rem;--r-lg:.5rem;--r-xl:.75rem;--max:1280px;--g:24px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--surface);color:var(--on-surface);line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(249,249,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--outline-v);box-shadow:0 2px 24px rgba(129,22,27,.06)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--g);height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--on-surface)}
+.nav-logo-mark{width:36px;height:36px;background:var(--primary);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fh);font-weight:700;font-size:16px}
+.nav-logo-text{font-family:var(--fh);font-weight:700;font-size:15px;line-height:1.2}
+.nav-logo-sub{font-family:var(--fl);font-size:10px;color:var(--outline);letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-family:var(--fb);font-size:14px;font-weight:500;color:var(--on-surface-v);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.btn-nav{display:inline-flex;align-items:center;background:var(--primary);color:#fff;font-family:var(--fb);font-size:14px;font-weight:500;padding:10px 20px;border-radius:var(--r-md);text-decoration:none;transition:background .3s}
+.btn-nav:hover{background:var(--primary-container)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham span{width:22px;height:2px;background:var(--on-surface);border-radius:2px}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--surface-lowest);border-bottom:1px solid var(--outline-v);z-index:99;padding:16px var(--g);flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--fb);font-size:15px;font-weight:500;color:var(--on-surface);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--outline-v)}
+.mob-menu a:last-child{border-bottom:none}
+@media(max-width:768px){.nav-links,.btn-nav{display:none}.ham{display:flex}}
+
+/* PAGE HEADER */
+.ph{padding-top:64px;background:var(--surface-lowest);border-bottom:1px solid var(--outline-v)}
+.ph-inner{max-width:var(--max);margin:0 auto;padding:56px var(--g) 64px}
+.ph-breadcrumb{font-family:var(--fl);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--outline);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.ph-breadcrumb a{color:var(--outline);text-decoration:none}
+.eyebrow{font-family:var(--fl);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:10px;display:block}
+.ph-title{font-family:var(--fh);font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--on-surface);line-height:1.2;margin-bottom:14px}
+.ph-desc{font-family:var(--fb);font-size:17px;color:var(--on-surface-v);line-height:1.7;max-width:600px}
+.divider{width:40px;height:3px;background:var(--primary);border-radius:2px;margin-top:14px}
+
+/* ELEMENT TABS */
+.element-tabs{background:var(--surface-low);border-bottom:1px solid var(--outline-v);position:sticky;top:64px;z-index:50}
+.tabs-inner{max-width:var(--max);margin:0 auto;padding:0 var(--g);display:flex;gap:0;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tab-btn{font-family:var(--fl);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--on-surface-v);padding:16px 20px;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.tab-btn:hover{color:var(--primary)}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+
+/* ELEMENT SECTIONS */
+.el-section{padding:72px var(--g);scroll-margin-top:128px}
+.el-section:nth-child(even){background:var(--surface-lowest)}
+.el-section:nth-child(odd){background:var(--surface)}
+.el-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:var(--max);margin:0 auto}
+.el-grid.reverse{direction:rtl}
+.el-grid.reverse > *{direction:ltr}
+.el-img{border-radius:var(--r-xl);overflow:hidden}
+.el-img img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+.el-accent-bar{height:3px;border-radius:2px;width:100%;margin-bottom:16px}
+.wood .el-accent-bar{background:#5d8a3c}
+.fire .el-accent-bar{background:var(--primary)}
+.earth .el-accent-bar{background:#8a6d3c}
+.metal .el-accent-bar{background:#8a8a8a}
+.water .el-accent-bar{background:#3c6d8a}
+.wood .eyebrow{color:#4a7030}
+.fire .eyebrow{color:var(--primary)}
+.earth .eyebrow{color:#6d5230}
+.metal .eyebrow{color:#606060}
+.water .eyebrow{color:#2a5a70}
+.el-title{font-family:var(--fh);font-size:clamp(22px,3vw,34px);font-weight:700;line-height:1.25;color:var(--on-surface);margin-bottom:14px}
+.el-desc{font-family:var(--fb);font-size:16px;color:var(--on-surface-v);line-height:1.75;margin-bottom:24px}
+.product-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{font-family:var(--fl);font-size:11px;font-weight:500;letter-spacing:.08em;padding:5px 14px;border-radius:99px;border:1px solid var(--outline-v);color:var(--on-surface-v);background:var(--surface-lowest);text-decoration:none;transition:all .2s;cursor:pointer}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+.el-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fb);font-size:14px;font-weight:500;color:var(--primary);text-decoration:none;transition:gap .2s}
+.el-link:hover{gap:10px}
+
+/* AI SECTION */
+.ai-section{background:var(--inverse);color:#fff;scroll-margin-top:128px}
+.ai-inner{max-width:var(--max);margin:0 auto;padding:72px var(--g)}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ai-eyebrow{font-family:var(--fl);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.ai-title{font-family:var(--fh);font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px}
+.ai-desc{font-family:var(--fb);font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:28px}
+.ai-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.ai-feat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:16px}
+.ai-feat-icon{font-size:20px;margin-bottom:8px}
+.ai-feat-title{font-family:var(--fh);font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.ai-feat-desc{font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.55);line-height:1.6}
+.ai-img{border-radius:var(--r-xl);overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:24px;display:flex;flex-direction:column;gap:16px}
+.ai-demo-bar{background:rgba(255,255,255,.08);border-radius:var(--r-lg);padding:16px}
+.ai-demo-label{font-family:var(--fl);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.ai-demo-langs{display:flex;flex-wrap:wrap;gap:6px}
+.ai-lang-chip{font-family:var(--fl);font-size:11px;padding:4px 10px;border-radius:99px;background:rgba(254,207,141,.15);border:1px solid rgba(254,207,141,.25);color:var(--gold)}
+
+/* CTA */
+.cta-strip{background:var(--primary);padding:56px var(--g);position:relative;overflow:hidden}
+.cta-strip-pat{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:22px 22px}
+.cta-strip-inner{position:relative;z-index:1;text-align:center;max-width:var(--max);margin:0 auto}
+.cta-strip h2{font-family:var(--fh);font-size:clamp(22px,3vw,36px);font-weight:700;color:#fff;margin-bottom:12px}
+.cta-strip p{font-family:var(--fb);font-size:16px;color:rgba(255,255,255,.68);max-width:460px;margin:0 auto 28px;line-height:1.7}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#2a1200;font-family:var(--fb);font-size:15px;font-weight:600;padding:13px 26px;border-radius:var(--r-md);text-decoration:none;transition:all .3s}
+.btn-gold:hover{background:#ffdf9e;transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--inverse);color:var(--inverse-on);padding:36px var(--g) 24px}
+.foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-copy{font-family:var(--fl);font-size:11px;color:rgba(255,255,255,.3)}
+.foot-links{display:flex;gap:24px;list-style:none}
+.foot-links a{font-family:var(--fl);font-size:11px;color:rgba(255,255,255,.35);text-decoration:none}
+.foot-links a:hover{color:rgba(255,255,255,.65)}
+
+@media(max-width:768px){
+  .el-section,.ai-inner{padding:52px 16px}
+  .el-grid,.ai-grid{grid-template-columns:1fr}
+  .el-grid.reverse{direction:ltr}
+  .ai-features{grid-template-columns:1fr}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">明</div>
+      <div><div class="nav-logo-text">明典有限公司</div><div class="nav-logo-sub">Ming-Dian Ltd.</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="services.html" class="active">五行系列服務</a></li>
+      <li><a href="product.html">數位光明燈</a></li>
+      <li><a href="cases.html">施工案例</a></li>
+      <li><a href="about.html">關於明典</a></li>
+    </ul>
+    <a href="contact.html" class="btn-nav">立即聯絡</a>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html">首頁</a><a href="services.html">五行系列服務</a>
+  <a href="product.html">數位光明燈</a><a href="cases.html">施工案例</a>
+  <a href="about.html">關於明典</a><a href="contact.html">立即聯絡</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="ph">
+  <div class="ph-inner">
+    <div class="ph-breadcrumb"><a href="index.html">首頁</a> › 五行系列服務</div>
+    <span class="eyebrow">五行哲學</span>
+    <h1 class="ph-title">五行系列服務</h1>
+    <p class="ph-desc">將古老的五行智慧與現代人工智慧精密融合，明典數位科技為您打造沿循往精神核心的橋樑，讓傳統信仰在數位時代展現永恆的生命活力。</p>
+    <div class="divider"></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="element-tabs">
+  <div class="tabs-inner">
+    <a href="#wood" class="tab-btn">🌿 木 · 吊飾念珠</a>
+    <a href="#fire" class="tab-btn active">🔥 火 · 光明燈</a>
+    <a href="#earth" class="tab-btn">🧵 土 · 護身符</a>
+    <a href="#metal" class="tab-btn">🪙 金 · 紀念幣</a>
+    <a href="#water" class="tab-btn">💧 水 · AI解籤</a>
+  </div>
+</div>
+
+<!-- 木 WOOD -->
+<section class="el-section wood" id="wood">
+  <div class="el-grid">
+    <div class="el-img">
+      <img src="https://ming-dian.com/wp-content/uploads/2024/12/PrayerBeads-1.jpg" alt="木刻吊飾與念珠">
+    </div>
+    <div>
+      <div class="el-accent-bar"></div>
+      <span class="eyebrow">木 · WOOD ELEMENT</span>
+      <h2 class="el-title">【木】匠心傳承</h2>
+      <p class="el-desc">每一顆念珠都承載著虔敬，觸摸指尖的信仰溫度。我們精選天然木材，以傳統工藝與現代設計結合，打造適合宮廟結緣的精緻吊飾與念珠系列。</p>
+      <p class="el-desc" style="margin-bottom:24px">每件作品都附有宮廟專屬客製化選項，可印製宮廟名稱、神明聖號及祈福語，成為信眾最珍貴的結緣品。</p>
+      <div class="product-chips">
+        <span class="chip">木刻吊飾</span>
+        <span class="chip">佛珠念珠</span>
+        <span class="chip">客製雕刻</span>
+        <span class="chip">宮廟結緣品</span>
+      </div>
+      <a href="contact.html" class="el-link">詢問客製規格 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 火 FIRE -->
+<section class="el-section fire" id="fire">
+  <div class="el-grid reverse">
+    <div class="el-img">
+      <img src="https://ming-dian.com/wp-content/uploads/2024/12/GuangMingLights-1.jpg" alt="光明燈">
+    </div>
+    <div>
+      <div class="el-accent-bar"></div>
+      <span class="eyebrow">火 · FIRE ELEMENT</span>
+      <h2 class="el-title">【火】光明指引</h2>
+      <p class="el-desc">以科技為明燈，照亮信眾前行之路，傳遞圓滿祝福。我們的 OLED 數位光明燈與電子紙拜斗，以最先進的顯示技術為傳統儀式注入現代精神。</p>
+      <p class="el-desc" style="margin-bottom:24px">從單柱燈到多柱燈，從壁燈到拜斗，完整產品線滿足各類型宮廟空間需求。</p>
+      <div class="product-chips">
+        <a href="product.html#OLED" class="chip">數位光明燈</a>
+        <a href="product.html#baido" class="chip">智能拜斗</a>
+        <a href="product.html#lantern" class="chip">宮廟燈籠</a>
+      </div>
+      <a href="product.html" class="el-link">查看完整規格 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 土 EARTH -->
+<section class="el-section earth" id="earth">
+  <div class="el-grid">
+    <div class="el-img">
+      <img src="https://ming-dian.com/wp-content/uploads/2024/12/Baidou-1.jpg" alt="護身符針織系列">
+    </div>
+    <div>
+      <div class="el-accent-bar"></div>
+      <span class="eyebrow">土 · EARTH ELEMENT</span>
+      <h2 class="el-title">【土】守護編織</h2>
+      <p class="el-desc">將神明的守護編織入內，隨身佩帶，保佑出入平安。我們的針織護身符系列融合傳統圖騰與現代工藝，提供多種尺寸與款式供宮廟選擇。</p>
+      <p class="el-desc" style="margin-bottom:24px">每款護身符均可客製宮廟印記，搭配精美包裝，是廟方贈送信眾的最佳結緣選擇。</p>
+      <div class="product-chips">
+        <span class="chip">針織香火袋</span>
+        <span class="chip">護身符</span>
+        <span class="chip">針織吊飾</span>
+        <span class="chip">紅菱旗幟</span>
+      </div>
+      <a href="contact.html" class="el-link">詢問批量採購 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 金 METAL -->
+<section class="el-section metal" id="metal">
+  <div class="el-grid reverse">
+    <div class="el-img">
+      <img src="https://ming-dian.com/wp-content/uploads/2024/12/SilverCoin-1.jpg" alt="紀念幣金箔">
+    </div>
+    <div>
+      <div class="el-accent-bar"></div>
+      <span class="eyebrow">金 · METAL ELEMENT</span>
+      <h2 class="el-title">【金】永恆金箔</h2>
+      <p class="el-desc">承載廟堂滿室的美好寓意，打造獨一無二的吉祥之物。我們的龍銀紀念幣與金箔系列，是宮廟建醮、百年紀念等重要時刻的最佳紀念品。</p>
+      <p class="el-desc" style="margin-bottom:24px">每一枚紀念幣均可客製設計，包含宮廟徽章、神明聖像及年份銘文，具有極高的收藏與文化價值。</p>
+      <div class="product-chips">
+        <span class="chip">龍銀紀念幣</span>
+        <span class="chip">金箔系列</span>
+        <span class="chip">鐵桶拜斗</span>
+        <span class="chip">開光紀念品</span>
+      </div>
+      <a href="contact.html" class="el-link">詢問客製設計 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 水 WATER / AI -->
+<section class="ai-section" id="water">
+  <div class="ai-inner">
+    <div class="ai-grid">
+      <div>
+        <span class="ai-eyebrow">水 · WATER ELEMENT</span>
+        <h2 class="ai-title">【水】智慧啟示</h2>
+        <p class="ai-desc">結合科技與心靈，讓天地同感您的虔敬之美。我們的 AI 解籤服務支援八國語言，讓信眾無論來自何處，都能感受神明的指引與祝福。</p>
+        <div class="ai-features">
+          <div class="ai-feat"><div class="ai-feat-icon">🌐</div><div class="ai-feat-title">8 國語言</div><div class="ai-feat-desc">中、英、日、韓、越、印、泰、馬來語，服務新住民與國際觀光客。</div></div>
+          <div class="ai-feat"><div class="ai-feat-icon">📱</div><div class="ai-feat-title">QR Code 即掃即用</div><div class="ai-feat-desc">信眾掃描後即可線上閱讀籤詩解析，響應 ESG 無紙化。</div></div>
+          <div class="ai-feat"><div class="ai-feat-icon">🤖</div><div class="ai-feat-title">AI 語意分析</div><div class="ai-feat-desc">結合古籍文本與現代語言模型，提供精準且易懂的解籤內容。</div></div>
+          <div class="ai-feat"><div class="ai-feat-icon">⚡</div><div class="ai-feat-title">即時回應</div><div class="ai-feat-desc">雲端架構支援高流量，即便廟會旺季也能穩定提供服務。</div></div>
+        </div>
+        <a href="contact.html" class="btn-gold">▷ 預約 AI 解籤展示</a>
+      </div>
+      <div class="ai-img">
+        <div class="ai-demo-bar">
+          <div class="ai-demo-label">支援語言 · SUPPORTED LANGUAGES</div>
+          <div class="ai-demo-langs">
+            <span class="ai-lang-chip">繁體中文</span>
+            <span class="ai-lang-chip">English</span>
+            <span class="ai-lang-chip">日本語</span>
+            <span class="ai-lang-chip">한국어</span>
+            <span class="ai-lang-chip">Tiếng Việt</span>
+            <span class="ai-lang-chip">Bahasa Indonesia</span>
+            <span class="ai-lang-chip">ภาษาไทย</span>
+            <span class="ai-lang-chip">Bahasa Melayu</span>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:20px">
+          <div style="font-family:var(--fl);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px">已導入宮廟 · ADOPTED TEMPLES</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.7);padding:8px 12px;background:rgba(255,255,255,.05);border-radius:var(--r-md)">礁溪三皇宮 · 宜蘭</div>
+            <div style="font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.7);padding:8px 12px;background:rgba(255,255,255,.05);border-radius:var(--r-md)">竹林山觀音寺 · 新北市</div>
+            <div style="font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.7);padding:8px 12px;background:rgba(255,255,255,.05);border-radius:var(--r-md)">台北火聖廟 · 台北市</div>
+            <div style="font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.7);padding:8px 12px;background:rgba(255,255,255,.05);border-radius:var(--r-md)">台北通化福德宮 · 台北市</div>
+            <div style="font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.55);padding:8px 12px;text-align:center">+ 更多宮廟...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-strip-pat"></div>
+  <div class="cta-strip-inner">
+    <h2>找到適合您宮廟的服務了嗎？</h2>
+    <p>我們的專業顧問將為您量身規劃最適合的數位轉型方案，免費諮詢，無壓力。</p>
+    <a href="contact.html" class="btn-gold">▷ 免費諮詢專業顧問</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-copy">© 2024 明典有限公司版權所有。數位宮廟，智慧永續。</div>
+    <ul class="foot-links">
+      <li><a href="index.html">首頁</a></li><li><a href="cases.html">施工案例</a></li>
+      <li><a href="contact.html">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  document.getElementById('ham').addEventListener('click',()=>document.getElementById('mob').classList.toggle('open'));
+  // Tab active state on scroll
+  const sections=['wood','fire','earth','metal','water'];
+  const tabs=document.querySelectorAll('.tab-btn');
+  window.addEventListener('scroll',()=>{
+    let cur='';
+    sections.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-160)cur=id;});
+    tabs.forEach(t=>{t.classList.toggle('active',t.getAttribute('href')==='#'+cur)});
+  });
+</script>
+</body>
+</html>

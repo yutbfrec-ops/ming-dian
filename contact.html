@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯絡顧問 | 明典有限公司 Ming-Dian Ltd.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Work+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #81161b;
+    --primary-container: #a22f2f;
+    --on-primary: #ffffff;
+    --on-primary-container: #ffc1bc;
+    --secondary: #7a5822;
+    --secondary-container: #ffd08d;
+    --on-secondary-container: #795721;
+    --surface: #f9f9f9;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f3f3f3;
+    --surface-container: #eeeeee;
+    --on-surface: #1b1b1b;
+    --on-surface-variant: #584140;
+    --outline: #8b716f;
+    --outline-variant: #dfbfbd;
+    --inverse-surface: #303030;
+    --inverse-on-surface: #f1f1f1;
+    --tech-gold: #fecf8d;
+    --font-headline: 'Manrope', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-label: 'Space Grotesk', sans-serif;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --container-max: 1280px;
+    --gutter: 24px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--on-surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249,249,249,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--outline-variant);
+    box-shadow: 0 2px 24px rgba(129,22,27,0.06);
+  }
+  .nav-inner {
+    max-width: var(--container-max); margin: 0 auto;
+    padding: 0 var(--gutter); height: 64px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--on-surface); }
+  .nav-logo-mark {
+    width: 36px; height: 36px; background: var(--primary); border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-family: var(--font-headline); font-weight: 700; font-size: 16px;
+  }
+  .nav-logo-text { font-family: var(--font-headline); font-weight: 700; font-size: 15px; line-height: 1.2; }
+  .nav-logo-sub { font-family: var(--font-label); font-size: 10px; color: var(--outline); letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--on-surface-variant); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary); color: white;
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    padding: 10px 20px; border-radius: var(--radius-md);
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-primary:hover { background: var(--primary-container); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { width: 22px; height: 2px; background: var(--on-surface); border-radius: 2px; }
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--surface-container-lowest); border-bottom: 1px solid var(--outline-variant);
+    z-index: 99; padding: 16px var(--gutter); flex-direction: column; gap: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--on-surface); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--outline-variant); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  @media (max-width: 768px) { .nav-links, .nav-links + .btn-primary { display: none; } .nav-hamburger { display: flex; } }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding-top: 64px;
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header-pattern {
+    position: absolute; inset: 0;
+    opacity: 0.06;
+    background-image: radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .page-header-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://ming-dian.com/wp-content/uploads/2024/11/光明燈大幅圖.jpg');
+    background-size: cover; background-position: center;
+    opacity: 0.08; mix-blend-mode: luminosity;
+  }
+  .page-header-inner {
+    position: relative; z-index: 1;
+    max-width: var(--container-max); margin: 0 auto;
+    padding: 56px var(--gutter) 64px;
+    text-align: center;
+  }
+  .page-eyebrow {
+    font-family: var(--font-label); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 12px; display: block;
+  }
+  .page-title {
+    font-family: var(--font-headline); font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; color: white; line-height: 1.2; margin-bottom: 14px;
+  }
+  .page-desc {
+    font-family: var(--font-body); font-size: 16px;
+    color: rgba(255,255,255,0.68); line-height: 1.7;
+    max-width: 480px; margin: 0 auto;
+  }
+
+  /* CONTACT LAYOUT */
+  .contact-section { padding: 72px var(--gutter); }
+  .contact-grid {
+    max-width: var(--container-max); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+  }
+
+  /* FORM */
+  .form-card {
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+  }
+  .form-card h2 {
+    font-family: var(--font-headline); font-size: 22px; font-weight: 700;
+    color: var(--on-surface); margin-bottom: 8px;
+  }
+  .form-card p {
+    font-family: var(--font-body); font-size: 14px; color: var(--on-surface-variant);
+    line-height: 1.6; margin-bottom: 28px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    font-family: var(--font-label); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--on-surface-variant); display: block; margin-bottom: 8px;
+  }
+  .form-label .required { color: var(--primary); margin-left: 2px; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: 12px 16px;
+    font-family: var(--font-body); font-size: 15px; color: var(--on-surface);
+    background: var(--surface-container-low);
+    border: 1.5px solid var(--outline-variant);
+    border-radius: var(--radius-md);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--outline); }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(129,22,27,0.1);
+    background: var(--surface-container-lowest);
+  }
+  .form-select-wrap { position: relative; }
+  .form-select-wrap::after {
+    content: '▾'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--outline); pointer-events: none; font-size: 14px;
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 14px;
+    background: var(--primary); color: white;
+    font-family: var(--font-body); font-size: 15px; font-weight: 600;
+    border: none; border-radius: var(--radius-md); cursor: pointer;
+    transition: background 0.3s, transform 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit:hover { background: var(--primary-container); transform: translateY(-1px); }
+  .form-note {
+    font-family: var(--font-body); font-size: 12px;
+    color: var(--outline); text-align: center; margin-top: 12px;
+  }
+  .form-success {
+    display: none; text-align: center; padding: 24px;
+    background: rgba(129,22,27,0.05); border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg); margin-top: 16px;
+  }
+  .form-success.show { display: block; }
+  .form-success-icon { font-size: 36px; margin-bottom: 8px; }
+  .form-success h3 { font-family: var(--font-headline); font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .form-success p { font-family: var(--font-body); font-size: 14px; color: var(--on-surface-variant); }
+
+  /* INFO SIDE */
+  .info-side { display: flex; flex-direction: column; gap: 20px; }
+  .info-card {
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .info-card-icon {
+    width: 40px; height: 40px;
+    background: rgba(129,22,27,0.08);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 14px;
+  }
+  .info-card-label {
+    font-family: var(--font-label); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--outline); margin-bottom: 6px;
+  }
+  .info-card-value {
+    font-family: var(--font-body); font-size: 16px; font-weight: 500;
+    color: var(--on-surface);
+  }
+  .info-card-value a { color: var(--primary); text-decoration: none; }
+  .info-card-value a:hover { text-decoration: underline; }
+
+  /* LINE QR */
+  .line-card {
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+  }
+  .line-card-label {
+    font-family: var(--font-label); font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--outline); margin-bottom: 12px;
+  }
+  .line-card h3 {
+    font-family: var(--font-headline); font-size: 18px; font-weight: 700;
+    color: var(--on-surface); margin-bottom: 8px;
+  }
+  .line-card p {
+    font-family: var(--font-body); font-size: 13px; color: var(--on-surface-variant);
+    margin-bottom: 20px; line-height: 1.6;
+  }
+  .line-qr-wrap {
+    width: 140px; height: 140px; margin: 0 auto 16px;
+    background: var(--surface-container);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--outline-variant);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .line-qr-placeholder {
+    font-family: var(--font-label); font-size: 11px; color: var(--outline);
+    text-align: center; padding: 12px;
+  }
+  .btn-line {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #06c755; color: white;
+    font-family: var(--font-body); font-size: 14px; font-weight: 600;
+    padding: 12px 24px; border-radius: var(--radius-md);
+    text-decoration: none; transition: background 0.2s;
+    width: 100%; justify-content: center;
+  }
+  .btn-line:hover { background: #05b34b; }
+
+  /* FOOTER BANNER */
+  .contact-banner {
+    background: var(--surface-container-low);
+    padding: 48px var(--gutter);
+    overflow: hidden;
+    position: relative;
+  }
+  .contact-banner-inner {
+    max-width: var(--container-max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .contact-banner-img {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+    background-image: url('https://ming-dian.com/wp-content/uploads/2024/11/光明燈大幅圖.jpg');
+    background-size: cover; background-position: center; opacity: 0.12;
+  }
+  .contact-banner-text { position: relative; z-index: 1; }
+  .contact-banner-text p {
+    font-family: var(--font-label); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--primary); margin-bottom: 8px;
+  }
+  .contact-banner-text h3 {
+    font-family: var(--font-headline); font-size: 20px; font-weight: 700;
+    color: var(--on-surface);
+  }
+
+  /* FOOTER */
+  footer { background: var(--inverse-surface); color: var(--inverse-on-surface); padding: 36px var(--gutter) 24px; }
+  .footer-bottom {
+    max-width: var(--container-max); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .footer-copyright { font-family: var(--font-label); font-size: 11px; color: rgba(255,255,255,0.3); }
+  .footer-bottom-links { display: flex; gap: 24px; list-style: none; }
+  .footer-bottom-links a { font-family: var(--font-label); font-size: 11px; color: rgba(255,255,255,0.35); text-decoration: none; }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+  .footer-bottom-links a.active-page { color: var(--on-primary-container); }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 24px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">明</div>
+      <div>
+        <div class="nav-logo-text">明典有限公司</div>
+        <div class="nav-logo-sub">Ming-Dian Ltd.</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="services.html">五行系列服務</a></li>
+      <li><a href="product.html">數位光明燈</a></li>
+      <li><a href="cases.html">施工案例</a></li>
+      <li><a href="about.html">關於明典</a></li>
+    </ul>
+    <a href="contact.html" class="btn-primary active">立即聯絡</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="services.html">五行系列服務</a>
+  <a href="product.html">數位光明燈</a>
+  <a href="cases.html">施工案例</a>
+  <a href="about.html">關於明典</a>
+  <a href="contact.html">立即聯絡</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-pattern"></div>
+  <div class="page-header-bg"></div>
+  <div class="page-header-inner">
+    <span class="page-eyebrow">DIGITAL SANCTUARY</span>
+    <h1 class="page-title">專業顧問諮詢</h1>
+    <p class="page-desc">讓科技點亮您的宮廟轉型之路，我們將由專人為您提供客製化方案。</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>預約諮詢申請</h2>
+      <p>填寫以下資料，我們的專業顧問將於 1 個工作天內與您聯繫。</p>
+
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="name">姓名 / 單位名稱 <span class="required">*</span></label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="例：北投慈后宮" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">聯絡電話 <span class="required">*</span></label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXX" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service">服務類別</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="service" name="service">
+              <option value="光明燈">數位光明燈</option>
+              <option value="拜斗">智能拜斗</option>
+              <option value="AI解籤">AI 解籤服務</option>
+              <option value="燈籠">宮廟燈籠</option>
+              <option value="其他">其他服務</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">需求說明</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="請簡述您的諮詢需求或預定時間..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">▷ 送出預約申請</button>
+        <p class="form-note">送出後將由專人於 1 個工作天內回覆</p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">🙏</div>
+        <h3>感謝您的申請</h3>
+        <p>我們已收到您的諮詢申請，專業顧問將於 1 個工作天內與您聯繫。</p>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-side">
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-label">OFFICE LOCATION</div>
+        <div class="info-card-value">台北市環河南路三段155號</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <div class="info-card-label">DIRECT LINE</div>
+        <div class="info-card-value"><a href="tel:0223011811">(02) 2301-1811</a></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">✉</div>
+        <div class="info-card-label">EMAIL ADDRESS</div>
+        <div class="info-card-value"><a href="mailto:service@ming-dian.com">service@ming-dian.com</a></div>
+      </div>
+
+      <!-- LINE -->
+      <div class="line-card">
+        <div class="line-card-label">LINE CONTACT</div>
+        <h3>掃描行動條碼加入好友</h3>
+        <p>請使用智慧手機版 LINE 掃描行動條碼來加入好友。</p>
+        <div class="line-qr-wrap">
+          <!-- 請替換為實際 LINE QR code 圖片 -->
+          <div class="line-qr-placeholder">LINE QR Code<br>（請替換實際圖片）</div>
+        </div>
+        <a href="https://line.me/R/ti/p/YOUR_LINE_ID" class="btn-line" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          立即加入 LINE 好友
+        </a>
+      </div>
+
+      <!-- BANNER IMG -->
+      <div style="border-radius:var(--radius-xl);overflow:hidden;position:relative;aspect-ratio:16/7;">
+        <img src="https://ming-dian.com/wp-content/uploads/2024/11/光明燈大幅圖.jpg" alt="明典科技" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.6);">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;">
+          <div style="font-family:var(--font-label);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);">明典科技 · 智慧永續</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copyright">© 2024 明典有限公司版權所有。</div>
+    <ul class="footer-bottom-links">
+      <li><a href="#">服務條款</a></li>
+      <li><a href="#">隱私政策</a></li>
+      <li><a href="contact.html" class="active-page">預約指南</a></li>
+      <li><a href="about.html">顧問介紹</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  // Form submit (Formspree)
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST', body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.classList.add('show');
+      }
+    } catch(err) {
+      // Fallback: still show success for demo
+      form.style.display = 'none';
+      success.classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>
